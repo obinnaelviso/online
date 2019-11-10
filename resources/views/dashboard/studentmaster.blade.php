@@ -135,7 +135,7 @@
               @if (Auth::guest())
 
               @else
-                    <span><img src="assets/img/parent/parent2.jpg" alt="user">{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
+                    <span>{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
               @endif
 						</a>
 						<ul class="dropdown-menu notification-list">

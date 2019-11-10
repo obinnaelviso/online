@@ -135,7 +135,7 @@
               @if (Auth::guest())
 
               @else
-                    <span><img src="assets/img/parent/parent2.jpg" alt="user">{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
+                    <span>{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
               @endif
 						</a>
 					<ul class="dropdown-menu notification-list">
@@ -244,7 +244,7 @@
                 <a href="lecturernote"><i class="fa fa-caret-right menu-icon"></i>LECTURER'S DOCUMENT</a>
               </li>
               <li>
-                <a href="{{ route('borangpemetaan') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW BORANGPEMETAAN</a>
+                <a href="{{ route('viewborangpemetaan') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW BORANGPEMETAAN</a>
               </li>
               <li>
                 <a href="{{ route('viewctes') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW CTES</a>
