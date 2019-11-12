@@ -127,7 +127,6 @@
 
             <div class="clearfix"></div>
           </li>
-      
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon"></i> FORMS <span class="caret"></span>
@@ -147,7 +146,6 @@
 
             <div class="clearfix"></div>
           </li>
-
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon"></i> CTES <span class="caret"></span>
@@ -180,11 +178,7 @@
           </li>
         </ul>
       </div>
-    </div>
-
-
-		@yield('content')
-
+		  @yield('content')
     </div>
 
 		<!-- Scripts -->
