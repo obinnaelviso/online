@@ -109,17 +109,14 @@
 									<h6 class="item-title"><i class="fa fa-address-book-o"></i>MY PROFILE</h6>
 									<div class="inner-item">
 										<div class="profile-intro">
-											<div class="col-xs-4 col-sm-12 col-md-4 clear-padding">
-												<img src="assets/img/parent/parent2.jpg" alt="user" />
-											</div>
 											<div class="col-xs-8 col-sm-12 col-md-8">
 												@if (Auth::guest())
 
 					              @else
-					                    <span><img src="assets/img/parent/parent2.jpg" alt="user">{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
+					                    <span>{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
 					              @endif
 												<h6>Lecturer, Std 5</h6>
-												<h6>Reg#: 109010</h6>
+												<h6>Reg#: {{ Auth::user()->idnum }}</h6>
 											</div>
 											<div class="clearfix"></div>
 										</div>
@@ -130,12 +127,12 @@
 													@if (Auth::guest())
 
 						              @else
-						                    <span><img src="assets/img/parent/parent2.jpg" alt="user">{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
+						                    <span>{{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}<span class="caret"></span></span>
 						              @endif
 												</div>
 												<div class="col-md-6 col-sm-12 col-xs-6 clear-padding">
 													<span>LECTURER #</span>
-													<p>109010</p>
+													<p>{{ Auth::user()->idnum }}</p>
 												</div>
 												<div class="clearfix"></div>
 											</div>

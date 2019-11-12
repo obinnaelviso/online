@@ -24,11 +24,11 @@
     </head>
     <body>
 		<div class="row dashboard-top-nav">
-			<div class="col-sm-5 logo">
-				<h5><i class="fa fa-book"></i>Online Community-Based Ecosystem</h5>
-			</div>
+			<div class="col-sm-7 logo">
+        <span class="visible-xs" style="position: absolute; margin-top: 20px; margin-right: -40px;"><a href="javascript:void(0);" class="btn btn-default sidebtn" id="sidebar-btn">☰</a></span> <h5><i class="fa fa-book"></i> Online Community-Based Ecosystem</h5>
+      </div>
 
-			<div class="col-sm-7 notification-area">
+			<div class="col-sm-5 notification-area">
 				<ul class="top-nav-list">
 			<!--		<li class="notification dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -244,7 +244,7 @@
                 <a href="lecturernote"><i class="fa fa-caret-right menu-icon"></i>LECTURER'S DOCUMENT</a>
               </li>
               <li>
-                <a href="{{ route('viewborangpemetaan') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW BORANGPEMETAAN</a>
+                <a href="{{ route('viewborangpemetaan') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW FORM</a>
               </li>
               <li>
                 <a href="{{ route('viewctes') }}"><i class="fa fa-caret-right menu-icon"></i>VIEW CTES</a>
@@ -261,83 +261,14 @@
             </ul>
             <div class="clearfix"></div>
           </li>
-        <!--  <li>
-            <a href="message"><i class="fa fa-envelope menu-icon"></i> MY MESSAGES</a>
-          </li>-->
-        <!--  <li>
-            <a href="admin_add_announcement"><i class="fa fa-bullhorn menu-icon"></i> ANNOUNCEMENTS</a>
-          </li>-->
-        <!--  <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-file-o menu-icon"></i> CLASSES <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="admin_add_class"><i class="fa fa-caret-right"></i>ADD CLASS</a>
-              </li>
-              <li>
-                <a href="admin_add_section"><i class="fa fa-caret-right"></i>ADD SECTION</a>
-              </li>
-              <li>
-                <a href="admin_add_class"><i class="fa fa-caret-right"></i>VIEW SECTIONS</a>
-              </li>
-              <li>
-                <a href="admin_add_section"><i class="fa fa-caret-right"></i>VIEW CLASSES</a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-book menu-icon"></i> SUBJECTS <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="admin_add_subject"><i class="fa fa-caret-right"></i>ADD</a>
-              </li>
-              <li>
-                <a href="admin_add_subject"><i class="fa fa-caret-right"></i>VIEW SUBJECTS</a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-calendar menu-icon"></i> TIMETABLE <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="admin_create_timetable"><i class="fa fa-caret-right"></i>CREATE</a>
-              </li>
-              <li>
-                <a href="admin_class_timetable"><i class="fa fa-caret-right"></i>VIEW</a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-address-card menu-icon"></i> REPORTS <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="teacher-attendence-report.html"><i class="fa fa-caret-right"></i>ATTENDENCE</a>
-              </li>
-              <li>
-                <a href="teacher-marks-report.html"><i class="fa fa-caret-right"></i>MARKS</a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </li>-->
           <li ul class="dropdown">
             <div class="all-notifications">
-
               <a href="{{route('logout')}}"><i class="fa fa-sign-in"></i>LOG OUT</a>
-
             </div>
           </li>
         </ul>
       </div>
+    </div>
 
 
 		@yield('content')
@@ -354,6 +285,7 @@
 		<script src="dashboard/assets/plugins/jquery.dataTables.min.js"></script>
 		<script src="dashboard/assets/plugins/dataTables.responsive.min.js"></script>
         <script src="dashboard/assets/js/js.js"></script>
+    <script src="dashboard/assets/js/sidebar.js"></script>
 
     </body>
 </html>

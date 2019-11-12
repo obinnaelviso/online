@@ -758,7 +758,7 @@ $validator = Validator::make($request->all(),$rules,$feedbackmsg);
     $borangpemetaan->userid = Auth::user()->id;
   $borangpemetaan->save();
 
-  return redirect()->route('viewborangpemetaan');
+  return redirect()->route('viewborangpemetaan')->with('success', 'Form editted successfully!');
 }
 
 public function deleteborangpemetaan(borangpemetaan $borangpemetaan) {
@@ -828,7 +828,7 @@ $validator = Validator::make($request->all(),$rules,$feedbackmsg);
 
     $borangpemetaan->userid = Auth::user()->id;
   $borangpemetaan->save();
-    return redirect()->route('viewborangpemetaan');
+    return redirect()->route('viewborangpemetaan')->with('success', 'Form added successfully!');
 
 }
 

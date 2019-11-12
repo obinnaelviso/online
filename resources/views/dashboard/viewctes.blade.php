@@ -13,14 +13,11 @@
 					<div class="row">
 						<div class="col-lg-12 clear-padding-xs">
 							<div class="col-lg-12">
-                  				<div class="top-nav-login-btn pull-left">
+                  				<div class="top-nav-login-btn">
       								<a href="addlecturernotelecturer"><i class="fa fa-sign-in"></i>ADD NEW DOCUMENT</a>
       							</div>
 								<div class="inner-item">
 									<div class="row">
-										<div class="col-sm-12">
-											<h3 class="text-center">PEMETAAN / MATRIKS KAEDAH PENILAIAN BERASASKAN HASIL PEMBELAJARAN UNTUK KURSUS</h3>
-										</div>
 										@if(session()->has('success'))
 											<div class="alert alert-success">{{ session()->get('success') }}</div>
 										@endif

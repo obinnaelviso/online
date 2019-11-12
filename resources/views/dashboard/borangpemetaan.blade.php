@@ -37,19 +37,12 @@
 											</div>-->
 
 											@if(count($errors) > 0)
-
-
-											@foreach($errors->all() as $error)
-
-											<h4 style="color:red">*{{$error}}</h4>
-
-
-											@endforeach
-
-
-
-
-
+												@foreach($errors->all() as $error)
+												<h4 style="color:red">*{{$error}}</h4>
+												@endforeach
+										@endif
+										@if(session()->has('success'))
+												<div class="alert alert-success">{{ session()->get('success') }}</div>
 											@endif
 
 

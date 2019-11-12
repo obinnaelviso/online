@@ -19,9 +19,9 @@
       							</div>
 								<div class="inner-item">
 									<div class="row">
-										<div class="col-sm-12">
-											<h3 class="text-center">PEMETAAN / MATRIKS KAEDAH PENILAIAN BERASASKAN HASIL PEMBELAJARAN UNTUK KURSUS</h3>
-										</div>
+										@if(session()->has('success'))
+											<div class="alert alert-success">{{ session()->get('success') }}</div>
+										@endif
 									</div>
 									<div class="row">
 										<table id="attendenceDetailedTable" class="display responsive" cellspacing="0" width="100%">
