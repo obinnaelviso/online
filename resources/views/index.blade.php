@@ -9,34 +9,44 @@
                     <li data-target="#homeSlider" data-slide-to="0" class="active"></li>
                     <li data-target="#homeSlider" data-slide-to="1"></li>
 					<li data-target="#homeSlider" data-slide-to="2"></li>
+					<li data-target="#homeSlider" data-slide-to="3"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active ">
-                        <img src="assets/img/slider/weemt.png" class="navy" alt="slide">
+                        <img src="assets/img/slider/tech3.jpg" class="navy" alt="slide">
                         <div class="carousel-caption">
 							<!--<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>-->
-                            <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
+                            <h2 style="text-shadow: 2px 2px 2px black">EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
                   <!--            <p>We here at <strong>UNIVERSITI MALAYA</strong> provides best education <br />  </p>-->
                         <!--    <a href="#"><i class="fa fa-paper-plane"></i>KNOW MORE</a>-->
                         </div>
                     </div>
 
                     <div class="item">
-                        <img src="assets/img/slider/wow.png" class="navy"  alt="slide">
+                        <img src="assets/img/slider/tech2.jpg" class="navy"  alt="slide">
                         <div class="carousel-caption">
 						<!--	<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>-->
-                            <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
+                            <h2 style="text-shadow: 2px 2px 2px black">EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
                         <!--      <p>We here at <strong>UNIVERSITI MALAYA</strong> provides best education <br />  </p>-->
                           <!--    <a href="#"><i class="fa fa-paper-plane"></i>KNOW MORE</a>-->
                         </div>
                     </div>
-					<div class="item">
-                        <img src="assets/img/slider/empower.png" class="navy" alt="slide2">
+                    <div class="item">
+                        <img src="assets/img/slider/tech4.jpg" class="navy" alt="slide2">
                         <div class="carousel-caption">
 						<!--	<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>-->
-                           <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
+                           <h2 style="text-shadow: 2px 2px 2px black">EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
+                      <!--      <p>We here at <strong>UNIVERSITI MALAYA</strong> provides best education <br />  </p>-->
+                            <!--    <a href="#"><i class="fa fa-paper-plane"></i>KNOW MORE</a>-->
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="assets/img/slider/tech5.jpg" class="navy" alt="slide2">
+                        <div class="carousel-caption">
+						<!--	<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>-->
+                           <h2 style="text-shadow: 2px 2px 2px black">EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
                       <!--      <p>We here at <strong>UNIVERSITI MALAYA</strong> provides best education <br />  </p>-->
                             <!--    <a href="#"><i class="fa fa-paper-plane"></i>KNOW MORE</a>-->
                         </div>
@@ -90,7 +100,7 @@ assignments and examinations, and also cub data redundancy which is a current is
 				</div>
 				<div class="col-sm-12">
 					<div class="event-tab-link-box">
-						<div class="pull-mid">
+						<div class="pull-center">
 							<ul class="nav nav-tabs">
 								<li class="active">
 									<a  href="#1" data-toggle="tab"><i class="fa fa-building"></i><span>SEMINARS</span></a>
@@ -98,7 +108,9 @@ assignments and examinations, and also cub data redundancy which is a current is
 								<li>
 									<a href="#2" data-toggle="tab"><i class="fa fa-users"></i><span>TECHNOSPHERE</span></a>
 								</li>
-
+								<li>
+									<a href="#3" data-toggle="tab"><i class="fa fa-envelope"></i><span>BUDDING INVENTORS</span></a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -171,8 +183,38 @@ assignments and examinations, and also cub data redundancy which is a current is
 									<div class="clearfix"></div>
 								</div>
 						</div>
-
-
+					</div>
+					<div class="tab-pane" id="3">
+						<div class="">
+								<div class="event-item">
+									<div class="col-sm-7">
+										<div class="event-date">
+											<p><span>11-12</span>DEC</p>
+										</div>
+										<h3>BUNDING INVENTORS CAMP 2019</h3>
+										<h6><i class="fa fa-map-marker"></i>Faculty of Education, University of Malaya.</h6>
+										<p>
+											🤔 how to spend school holidays wisely <br>
+											💡kids being inventors <br>
+											🖱creative minds <br>
+											<br>
+											<h4>📲 VISIT!!! 👇</h4>
+											<b><a href="https://www.facebook.com/Budding-Inventors-Camp-111683580286394/?modal=admin_todo_tour" class="btn btn-primary" target="_blank"><i class="fa fa-facebook"></i> OUR FACEBOOK PAGE</a></b><br>
+											<br>
+											<b><a style="font-size: 18px" href="https://forms.gle/bHmz1qh9wnegAZCJ9" target="_blank" class="btn btn-danger btn-lg"><i class="fa fa-home"></i> CLICK TO REGISTER NOW!</a></b>
+										</p>
+									</div>
+									<div class="col-sm-5 event-item-img">
+										<div class="event-img">
+											<img src="assets/img/bic2019.jpg" alt="event" />
+											<div class="event-detail-link">
+												<a href="/assets/img/bic2019.jpg" target="_blank" download>VIEW DETAILS</a>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+						</div>
 					</div>
 
 				</div>

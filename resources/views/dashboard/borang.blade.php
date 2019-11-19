@@ -1,7 +1,3 @@
-
-
-
-
 @extends('dashboard.lecturermaster')
 
 @section('content')

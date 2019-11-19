@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿-<!DOCTYPE html>
 <html lang="en">
     <head>
 
@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="">
         <title>Online Community-based Ecosystem (OnCE)</title>
-        <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
         <!-- Styles -->
@@ -28,9 +28,9 @@
 					<div class = "pull-right">
 						<div class="top-nav-social pull-left">
 								<a href="https://www.facebook.com/citedfpum"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-google-plus"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
+								<a href="https://twitter.com/CITeD14"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.youtube.com/channel/UCv2nJkf5Zg4i1c3ImlC6CVQ?view_as=subscriber"><i class="fa fa-youtube"></i></a>
+								{{-- <a href="#"><i class="fa fa-linkedin"></i></a> --}}
 						</div>
 						<div class="top-nav-login-btn pull-right">
               @if (Auth::guest())
@@ -150,9 +150,8 @@
 			</div>
 			<div class="footer-social-row">
 				<a href="https://www.facebook.com/citedfpum"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-google-plus"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="https://twitter.com/CITeD14"><i class="fa fa-twitter"></i></a>
+				<a href="https://www.youtube.com/channel/UCv2nJkf5Zg4i1c3ImlC6CVQ?view_as=subscriber"><i class="fa fa-youtube"></i></a>
 			</div>
 		</div>
 

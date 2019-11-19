@@ -1,4 +1,4 @@
-@extends('dashboard.adminmaster')
+@extends(Auth::guard('bic')->check() ? 'dashboard.bicmaster':'dashboard.adminmaster')
 
 @section('content')
 

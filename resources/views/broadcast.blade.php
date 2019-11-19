@@ -62,7 +62,7 @@
 			<div class="container">
 				<div class="col-sm-6 admission-row">
 					<center><h3>WATCH OUR VIDEOS</h3></center>
-					<iframe width="530" height="345" src="https://www.youtube.com/embed/MsKwFrBX-ZI">
+					<iframe width="530" height="345" src="https://www.youtube.com/embed/hNPB8abQk3A">
 					</iframe>
 				</div>
 				<div class="col-sm-6 info-row">

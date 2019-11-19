@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\User;
+use App\Bic;
 use App\citedkpi;
 use App\lecturernote;
 use App\ctes;
@@ -132,8 +133,8 @@ $user->program = $request->others;
 
     $rules = array(
 
-    'email' => 'required|email',
-    'password' => 'required|alphaNum|min:8',
+    'email' => 'required',
+    'password' => 'required|min:8',
     );
 
 
@@ -156,10 +157,14 @@ $user->program = $request->others;
 
 
    $user = User::where('email',$request->email)->where('password',$request->password)->first();
+   $bic = Bic::where('username',$request->email)->where('password',$request->password)->first();
    if($user == null){
-     //redirect failed
-
-       return back()->withErrors(['Invalid email and/or password']);
+     if($bic == null)
+        return back()->withErrors(['Invalid email and/or password']);
+      else {
+        Auth::guard('bic')->login($bic);
+        return redirect()->route('bicDashboard');
+      }
    }else{
      //rediredt userpage
 
@@ -372,8 +377,10 @@ $file->storeAs('public/uploads/lecturefile',str_replace(' ', '_', $file->getClie
 
 public function logout()
 {
-
-  Auth::logout();
+  if(Auth::guard('web')->check())
+    Auth::guard('web')->logout();
+  else
+    Auth::guard('bic')->logout();
   return redirect()->intended('home');
 }
 
@@ -514,17 +521,28 @@ $user->save();
 
 
      }
-
-
-
 }
 
-public function bookinfo2(){
-
+public function bookinfo2() {
   $alllecturer = book::all();
     return view('dashboard.addbook',compact('addbook'));
 }
 
+public function registerBicsForm() {
+    return view('register-bics');
+}
+
+public function registerBics(Request $request) {
+    $this->bicValidator($request->all())->validate();
+    $user = Bic::create($request->all());
+
+    Auth::guard('bic')->login($user);
+    return redirect()->route('bicDashboard');
+}
+
+public function bicDashboard() {
+  return view('station.bic-dashboard');
+}
 
 public function addbookprocess2(Request $request){
   //echo json_encode($request->all());
@@ -1190,5 +1208,16 @@ if($validator->fails()){
    $user->save();
  return view('bookingsuccessful');
  }
+
+ protected function bicValidator(array $data)
+    {
+        return Validator::make($data, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'school' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:bics'],
+            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+        ]);
+    }
 
 }

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="station/images/favicon.ico">
+	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="apple-touch-icon" href="station/images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -40,8 +40,8 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a class="navbar-brand" href="home">
-							  <img src="station/images/logo/3.png" alt="logo">
+							<a class="navbar-brand" href="/">
+							  <img src="assets/img/once.png" alt="logo" style="height: 100px">
 							</a>
 
 						</div>

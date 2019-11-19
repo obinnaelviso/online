@@ -149,4 +149,4 @@ if(document.getElementById("exampleRadios1").checked){
     }*/
 }
 </script>
-	@endsection
+  @endsection

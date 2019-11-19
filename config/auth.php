@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'bic' => [
+            'driver' => 'session',
+            'provider' => 'bics',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,6 +76,10 @@ return [
             'model' => App\User::class,
         ],
 
+        'bics' => [
+            'driver' => 'eloquent',
+            'model' => App\Bic::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -95,6 +104,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'bics' => [
+            'provider' => 'bics',
             'table' => 'password_resets',
             'expire' => 60,
         ],

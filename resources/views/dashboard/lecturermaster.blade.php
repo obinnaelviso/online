@@ -13,6 +13,7 @@
 		 <link href="dashboard/assets/css/chartist.min.css" rel="stylesheet" media="screen">
 		<link href="dashboard/assets/css/owl.carousel.min.css" rel="stylesheet" media="screen">
 		<link href="dashboard/assets/css/owl.theme.default.min.css" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href="dashboard/assets/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
 		<link href="dashboard/assets/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
         <link href="dashboard/assets/css/style.css" rel="stylesheet" media="screen">
