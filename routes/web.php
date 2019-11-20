@@ -30,6 +30,11 @@ Route::post('addbookprocess2', ['uses' => 'AdminController@addbookprocess2', 'as
 
 Route::get('logout',['uses' =>'AdminController@logout', 'as' => 'logout']);
 
+Route::get('bicregister',['uses' =>'AdminController@registerBicsForm']);
+
+Route::post('bics/',['uses' =>'AdminController@registerBics', 'as' => 'register.bics']);
+Route::get('bic-dashboard/',['uses' =>'AdminController@bicDashboard'])->name('bicDashboard');
+
 Route::post('enteremailprocess',['uses' =>'AdminController@enteremailprocess', 'as' => 'enteremailprocess']);
 
 Route::post('answer',['uses' =>'AdminController@securityanswer', 'as' => 'answer']);
