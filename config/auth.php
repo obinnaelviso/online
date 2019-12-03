@@ -46,6 +46,11 @@ return [
             'provider' => 'bics',
         ],
 
+        'facilitator' => [
+            'driver' => 'session',
+            'provider' => 'facilitators',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -80,6 +85,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Bic::class,
         ],
+
+        'facilitators' => [
+            'driver' => 'eloquent',
+            'model' => App\Facilitator::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -110,6 +120,11 @@ return [
 
         'bics' => [
             'provider' => 'bics',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'facilitators' => [
+            'provider' => 'facilitators',
             'table' => 'password_resets',
             'expire' => 60,
         ],

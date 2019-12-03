@@ -35,7 +35,7 @@
 						<div class="top-nav-login-btn pull-right">
               @if (Auth::guest())
 
-              <a href="login" target="_blank"><i class="fa fa-sign-in"></i>LOGIN/REGISTER</a>
+              <a href="login"><i class="fa fa-sign-in"></i>LOGIN/REGISTER</a>
               @else
 
                 <a href="{{route('logout')}}" target="_blank"><i class="fa fa-sign-in"></i>LOG OUT</a>

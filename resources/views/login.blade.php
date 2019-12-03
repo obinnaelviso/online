@@ -4,7 +4,7 @@
 
   <!-- Page Title Section -->
   <div class="row page-title page-title-about">
-    <div class="container">
+    <div class="contaisstner">
       <h2><i class="fa fa-users"></i>ACCESS THE ENDLESS POSSIBILITIES OF OUR COMMUNITY</h2>
     </div>
   </div>

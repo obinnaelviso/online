@@ -14,7 +14,7 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="assets/img/slider/broad1.jpg" alt="slide1">
+                        <img src="assets/img/slider/t1.jpg" alt="slide1">
                         <div class="carousel-caption">
 							<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>
                         <!--    <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="assets/img/slider/broa.jpg" alt="slide2">
+                        <img src="assets/img/slider/t2.jpg" alt="slide2">
                         <div class="carousel-caption">
 							<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>
                     <!--        <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
 					<div class="item">
-                        <img src="assets/img/slider/broad.jpg" alt="slide2">
+                        <img src="assets/img/slider/t3.jpg" alt="slide2">
                         <div class="carousel-caption">
 							<h4><i class="fa fa-star-o"></i>WE EMPOWER YOU TO CREATE<i class="fa fa-star-o"></i></h4>
                         <!--   <h2>EDUCATE <span><i class="fa fa-graduation-cap"></i>ILLUMINATE</span> <span> <i class="fa fa-graduation-cap"></i> </span> CREATE</h2>
@@ -65,11 +65,11 @@
 					<iframe width="530" height="345" src="https://www.youtube.com/embed/hNPB8abQk3A">
 					</iframe>
 				</div>
-				<div class="col-sm-6 info-row">
+				{{-- <div class="col-sm-6 info-row">
 					<center><h3>LISTEN TO OUR RADIO</h3></center>
 					<iframe sandbox="allow-same-origin allow-scripts allow-top-navigation allow-popups" scrolling=no width="530" height="185" frameborder="0" src="https://embed.radiopublic.com/e?if=educate-GqzxO1"></iframe>
 					</div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 

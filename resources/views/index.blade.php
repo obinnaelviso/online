@@ -191,7 +191,7 @@ assignments and examinations, and also cub data redundancy which is a current is
 										<div class="event-date">
 											<p><span>11-12</span>DEC</p>
 										</div>
-										<h3>BUNDING INVENTORS CAMP 2019</h3>
+										<h3>BUDDING INVENTORS CAMP 2019</h3>
 										<h6><i class="fa fa-map-marker"></i>Faculty of Education, University of Malaya.</h6>
 										<p>
 											🤔 how to spend school holidays wisely <br>

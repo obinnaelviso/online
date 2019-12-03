@@ -35,6 +35,19 @@
             <label>USERNAME</label>
             <input type="text" placeholder="Username" class="form-control" name="username" id="username">
           </div>
+           <div class="col-xs-12">
+            <input class="form-check-input" type="radio" name="usertype" id="exampleRadios2" value="bic" required>
+            <label class="form-check-label" for="exampleRadios2">
+              BIC
+            </label>
+          </div>
+
+          <div class="col-xs-12">
+            <input class="form-check-input" type="radio" name="usertype" id="exampleRadios3" value="facilitator" required>
+            <label class="form-check-label" for="exampleRadios3">
+              FACILITATOR
+            </label>
+          </div>
           <div class="col-xs-12">
             <label>SCHOOL</label>
             <input type="text" placeholder="School" class="form-control" name="school" id="school">

@@ -72,9 +72,9 @@
 	<input type="text" name="bookauthor" value=""><br><br>
 	<br/>
 
-	 <label for="input">Enter Product Price </label>
+	{{--  <label for="input">Enter Product Price </label>
 	<input type="number" name="bookprice" value=""><br><br>
-	<br/>
+	<br/> --}}
 
 	<label for="input">Enter Product Description </label>
  <input type="textarea" name="bookdesc" value=""><br><br>

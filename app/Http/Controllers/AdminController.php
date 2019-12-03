@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\User;
 use App\Bic;
+use App\Post;
+use App\Facilitator;
 use App\citedkpi;
 use App\lecturernote;
 use App\ctes;
@@ -158,9 +160,17 @@ $user->program = $request->others;
 
    $user = User::where('email',$request->email)->where('password',$request->password)->first();
    $bic = Bic::where('username',$request->email)->where('password',$request->password)->first();
+   $facilitator = Facilitator::where('username',$request->email)->where('password',$request->password)->first();
+
    if($user == null){
-     if($bic == null)
-        return back()->withErrors(['Invalid email and/or password']);
+     if($bic == null) {
+        if($facilitator == null)
+             return back()->withErrors(['Invalid email and/or password']);
+        else {
+          Auth::guard('facilitator')->login($facilitator);
+          return redirect()->route('facilitatorDashboard');
+        }
+      }
       else {
         Auth::guard('bic')->login($bic);
         return redirect()->route('bicDashboard');
@@ -534,14 +544,25 @@ public function registerBicsForm() {
 
 public function registerBics(Request $request) {
     $this->bicValidator($request->all())->validate();
-    $user = Bic::create($request->all());
+    if($request->usertype == "bic") {
+      $user = Bic::create($request->all());
+      Auth::guard('bic')->login($user);
+    }
+    else {
+      $user = Facilitator::create($request->all());
+      Auth::guard('facilitator')->login($user);
+      return redirect()->route('facilitatorDashboard');
+    }
 
-    Auth::guard('bic')->login($user);
     return redirect()->route('bicDashboard');
 }
 
 public function bicDashboard() {
   return view('station.bic-dashboard');
+}
+
+public function facilitatorDashboard() {
+  return view('station.facilitator-dashboard');
 }
 
 public function addbookprocess2(Request $request){
@@ -784,69 +805,132 @@ public function deleteborangpemetaan(borangpemetaan $borangpemetaan) {
   return redirect()->route('viewborangpemetaan');
 }
 
-public function borangpemetaan(Request $request){
-$rules = array(
-'faculty' => 'required',
-'session' => 'required',
-'semester' => 'required',
-'jabatan' => 'required',
-'program' => 'required',
-'description' => 'required',
-'borangfile' => 'required',
+public function createPostPage() {
+  return view('dashboard.create-post');
+}
 
-);
+public function createPost(Request $request) {
+  $rules = array(
+  'title' => 'required',
+  'body' => 'required',
 
-$feedbackmsg = array(
-  'faculty.required' => 'Please select Faculty',
-  'session.required' => 'Please select Session',
-  'semester.required' => 'Please select Semester',
-  'jabatan.required' => 'Kindly enter Jabatan',
-  'program.required' => 'Kindly enter Program',
-  'description.required' => 'Kindly enter d description',
-  'borangfile.required' => 'Kindly upload a borang file',
-  'userid.required' => 'Session timed out, please login',
+  );
 
-);
-$validator = Validator::make($request->all(),$rules,$feedbackmsg);
+  $feedbackmsg = array(
+    'title.required' => 'Kindly enter title',
+    'body.required' => 'Kindly enter body',
+  );
+  $validator = Validator::make($request->all(),$rules,$feedbackmsg);
 
-// if($validator->fails()){
-//   return back()->withErrors($validator);
-//   return;
-// }
 
-    /*  $file = $request->file('lecturefile');
-      //Move Uploaded File
-     $destinationPath = storage_path(). '/public/uploads/lecturefile';
-      if($file == null){
-          echo "error file is empty";
-        return;
-      }
+    $post = new Post;
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->facilitator_id = Auth::guard('facilitator')->user()->id;
+    $post->save();
+    return redirect()->route('createPost')->with('success', 'Posts created successfully!');
 
-      $booklink =  storage_path().'/public/uploads/lecturefile/'.str_replace(' ', '_', $file->getClientOriginalName());
-      $file->storeAs('public/uploads/lecturefile',str_replace(' ', '_', $file->getClientOriginalName()));
-*/
-  $borangfile = '';
-  $borangfile_name = '';
-  if($request->hasFile('borangfile')) {
-      $course = $request->course;
-      $borangfile_name = $request->file('borangfile')->getClientOriginalName();
-      $file_url = $request->file('borangfile')->storeAs('public/uploads/borang/'.$course, $borangfile_name);
-      $borangfile = str_replace("public/", "", $file_url);
-  }
+}
+public function editPostPage(Post $post) {
+  return view('dashboard.edit-post', compact('post'));
+}
+public function editPost(Post $post, Request $request) {
+  $rules = array(
+  'title' => 'required',
+  'body' => 'required',
 
-  $borangpemetaan = new borangpemetaan();
-  $borangpemetaan->faculty = $request->faculty;
-  $borangpemetaan->session = $request->session;
-  $borangpemetaan->semester = $request->semester;
-  $borangpemetaan->jabatan = $request->jabatan;
-  $borangpemetaan->course = $request->course;
-  $borangpemetaan->description = $request->description;
-  $borangpemetaan->borangfile = $borangfile;
-  $borangpemetaan->borangfile_name = $borangfile_name;
+  );
 
-    $borangpemetaan->userid = Auth::user()->id;
-  $borangpemetaan->save();
-    return redirect()->route('viewborangpemetaan')->with('success', 'Form added successfully!');
+  $feedbackmsg = array(
+    'title.required' => 'Kindly enter title',
+    'body.required' => 'Kindly enter body',
+  );
+  $validator = Validator::make($request->all(),$rules,$feedbackmsg);
+
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->save();
+    return redirect()->route('editPost', $post->id)->with('success', 'Posts editted successfully!');
+
+}
+
+public function posts() {
+  $posts = Post::latest()->paginate(20);
+  return view('dashboard.posts', compact('posts'));
+}
+
+public function viewPost(Post $post) {
+  return view('dashboard.view-post', compact('post'));
+}
+
+public function deletepost(Post $post) {
+  $post->delete();
+  return redirect()->route('posts')->with('success', 'Post deleted successfully!');
+}
+
+public function borangpemetaan(Request $request) {
+  $rules = array(
+  'faculty' => 'required',
+  'session' => 'required',
+  'semester' => 'required',
+  'jabatan' => 'required',
+  'program' => 'required',
+  'description' => 'required',
+  'borangfile' => 'required',
+
+  );
+
+  $feedbackmsg = array(
+    'faculty.required' => 'Please select Faculty',
+    'session.required' => 'Please select Session',
+    'semester.required' => 'Please select Semester',
+    'jabatan.required' => 'Kindly enter Jabatan',
+    'program.required' => 'Kindly enter Program',
+    'description.required' => 'Kindly enter d description',
+    'borangfile.required' => 'Kindly upload a borang file',
+    'userid.required' => 'Session timed out, please login',
+
+  );
+  $validator = Validator::make($request->all(),$rules,$feedbackmsg);
+
+  // if($validator->fails()){
+  //   return back()->withErrors($validator);
+  //   return;
+  // }
+
+      /*  $file = $request->file('lecturefile');
+        //Move Uploaded File
+       $destinationPath = storage_path(). '/public/uploads/lecturefile';
+        if($file == null){
+            echo "error file is empty";
+          return;
+        }
+
+        $booklink =  storage_path().'/public/uploads/lecturefile/'.str_replace(' ', '_', $file->getClientOriginalName());
+        $file->storeAs('public/uploads/lecturefile',str_replace(' ', '_', $file->getClientOriginalName()));
+  */
+    $borangfile = '';
+    $borangfile_name = '';
+    if($request->hasFile('borangfile')) {
+        $course = $request->course;
+        $borangfile_name = $request->file('borangfile')->getClientOriginalName();
+        $file_url = $request->file('borangfile')->storeAs('public/uploads/borang/'.$course, $borangfile_name);
+        $borangfile = str_replace("public/", "", $file_url);
+    }
+
+    $borangpemetaan = new borangpemetaan();
+    $borangpemetaan->faculty = $request->faculty;
+    $borangpemetaan->session = $request->session;
+    $borangpemetaan->semester = $request->semester;
+    $borangpemetaan->jabatan = $request->jabatan;
+    $borangpemetaan->course = $request->course;
+    $borangpemetaan->description = $request->description;
+    $borangpemetaan->borangfile = $borangfile;
+    $borangpemetaan->borangfile_name = $borangfile_name;
+
+      $borangpemetaan->userid = Auth::user()->id;
+    $borangpemetaan->save();
+      return redirect()->route('viewborangpemetaan')->with('success', 'Form added successfully!');
 
 }
 
@@ -1215,7 +1299,7 @@ if($validator->fails()){
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'school' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:bics'],
+            'username' => ['required', 'string', 'max:255', 'unique:bics', 'unique:facilitators'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
         ]);
     }
