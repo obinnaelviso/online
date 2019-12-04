@@ -36,7 +36,7 @@ Route::post('bics/',['uses' =>'AdminController@registerBics', 'as' => 'register.
 Route::get('bic-dashboard/',['uses' =>'AdminController@bicDashboard'])->name('bicDashboard');
 
 Route::get('facilitator-dashboard/',['uses' =>'AdminController@facilitatorDashboard'])->name('facilitatorDashboard');
-Route::get('facilitator/posts',['uses' =>'AdminController@posts']);
+Route::get('facilitator/posts',['uses' =>'AdminController@posts'])->name('posts');
 Route::get('facilitator/posts/{post}/view',['uses' =>'AdminController@viewPost'])->name('viewPost');
 Route::get('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPostPage'])->name('editPost');
 Route::put('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPost']);
