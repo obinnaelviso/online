@@ -314,3 +314,9 @@ Route::get('/admindocument', function () {
 Route::get('stationhome', ['uses' => 'AdminController@getstationhome', 'as' => 'stationhome']);
 
 Route::get('lecturernotelecturer', ['uses' => 'AdminController@getlecturer2', 'as' => 'lecturernotelecturer']);
+
+Route::get('/updateapp', function()
+{
+    \Artisan::call('dump-autoload');
+    echo 'dump-autoload complete';
+});
