@@ -41,7 +41,7 @@ Route::get('facilitator/posts/{post}/view',['uses' =>'AdminController@viewPost']
 Route::get('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPostPage'])->name('editPost');
 Route::put('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPost']);
 Route::get('facilitator/posts/create',['uses' =>'AdminController@createPostPage'])->name('createPost');
-Route::get('facilitator/posts/create',['uses' =>'AdminController@createPost']);
+Route::post('facilitator/posts/create',['uses' =>'AdminController@createPost']);
 Route::delete('facilitator/posts/{post}/delete',['uses' =>'AdminController@deletePost'])->name('deletePost');
 
 
