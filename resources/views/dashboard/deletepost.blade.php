@@ -3,7 +3,7 @@
 	<div class="modal-dialog">
 		<!-- Modal content-->
 
-		<form action="{{ route('deletepost', $post->id) }}" method="post">
+		<form action="{{ route('deletePost', $post->id) }}" method="post">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>

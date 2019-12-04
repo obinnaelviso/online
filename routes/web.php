@@ -35,6 +35,16 @@ Route::get('bicregister',['uses' =>'AdminController@registerBicsForm']);
 Route::post('bics/',['uses' =>'AdminController@registerBics', 'as' => 'register.bics']);
 Route::get('bic-dashboard/',['uses' =>'AdminController@bicDashboard'])->name('bicDashboard');
 
+Route::get('facilitator-dashboard/',['uses' =>'AdminController@facilitatorDashboard'])->name('facilitatorDashboard');
+Route::get('facilitator/posts',['uses' =>'AdminController@posts']);
+Route::get('facilitator/posts/{post}/view',['uses' =>'AdminController@viewPost'])->name('viewPost');
+Route::get('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPostPage'])->name('editPost');
+Route::put('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPost']);
+Route::get('facilitator/posts/create',['uses' =>'AdminController@createPostPage'])->name('createPost');
+Route::get('facilitator/posts/create',['uses' =>'AdminController@createPost']);
+Route::delete('facilitator/posts/{post}/delete',['uses' =>'AdminController@deletePost'])->name('deletePost');
+
+
 Route::post('enteremailprocess',['uses' =>'AdminController@enteremailprocess', 'as' => 'enteremailprocess']);
 
 Route::post('answer',['uses' =>'AdminController@securityanswer', 'as' => 'answer']);

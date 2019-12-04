@@ -17,8 +17,9 @@
 				        {{ session()->get('success') }} <a href="{{ route('posts') }}"><u>View Post</u></a>
 				    </div>
 				@endif
-				<form action="{{ route('editPost', $post->id) }}" method="post" enctype="multipart/form-data">
+				<form action="{{ route('editPost', $post->id) }}" method="post">
 					@csrf
+					@method('PUT')
 					<div class="form-group">
 				        <label for="title">Title</label>
 				        <input type="text" class="form-control" id="title" name="title" value="{{ old('title')?: $post->title }}" required>

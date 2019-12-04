@@ -863,7 +863,7 @@ public function viewPost(Post $post) {
   return view('dashboard.view-post', compact('post'));
 }
 
-public function deletepost(Post $post) {
+public function deletePost(Post $post) {
   $post->delete();
   return redirect()->route('posts')->with('success', 'Post deleted successfully!');
 }
