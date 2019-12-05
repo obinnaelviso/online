@@ -28,7 +28,7 @@
 					<li>
 						<div class="col-12 mb-5">
 							<h4><a href="{{ route('viewPost', $post->id) }}">{{ $post->title }}</a></h4>
-							{!! limit_text($post->body, 70) !!}
+							{{-- limit_text($post->body, 70) --}}
 							<div class="btn-group"><a class="btn btn-warning" href="{{ route('editPost', $post->id) }}"><span class="fa fa-pencil"></span> Edit</a><a class="btn btn-danger" data-toggle="modal" data-target="#deleteDetailModal_{{ $post->id }}"><span class="fa fa-trash"></span> Delete</a> @include('dashboard.deletepost')</div>
 						</div>
 					</li>
