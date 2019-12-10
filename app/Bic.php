@@ -15,7 +15,7 @@ class Bic extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'username', 'school'
+        'first_name', 'last_name', 'email', 'password', 'username', 'school', 'theme_id'
     ];
 
     /**
@@ -26,4 +26,8 @@ class Bic extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function theme() {
+        return $this->belongsTo('App\Theme');
+    }
 }

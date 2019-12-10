@@ -35,8 +35,8 @@
                     @endif
         </div>
         <div class="col-xs-12">
-          <label>EMAIL</label>
-          <input type="text" placeholder="Email" class="form-control" name="email" id="email">
+          <label>EMAIL / USERNAME</label>
+          <input type="text" placeholder="Email / Username" class="form-control" name="email" id="email">
         </div>
 
         <div class="col-xs-12">

@@ -15,7 +15,7 @@ class Facilitator extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'username', 'school'
+        'first_name', 'last_name', 'email', 'password', 'username', 'school', 'theme_id'
     ];
 
     /**
@@ -26,4 +26,12 @@ class Facilitator extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function theme() {
+        return $this->belongsTo('App\Theme');
+    }
+
+    public function bics() {
+        return $this->hasMany('App\Bic');
+    }
 }

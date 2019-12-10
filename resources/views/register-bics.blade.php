@@ -48,6 +48,16 @@
               FACILITATOR
             </label>
           </div>
+
+          <div class="col-xs-12">
+            <label>THEME</label>
+            <select id="theme" name="theme_id" class="form-control" required>
+            <option value="" disabled>Select Theme</option>
+            @foreach($themes as $theme)
+              <option value="{{ $theme->id }}">{{ $theme->name }}</option>
+            @endforeach
+           </select>
+          </div>
           <div class="col-xs-12">
             <label>SCHOOL</label>
             <input type="text" placeholder="School" class="form-control" name="school" id="school">

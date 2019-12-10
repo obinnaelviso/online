@@ -21,6 +21,9 @@ use App\Intech;
 use App\Intechpro;
 use App\Inventor;
 use App\Mail\Booking;
+use App\Theme;
+use App\Module;
+use App\FacilitatorComment;
 
 use Auth;
 
@@ -389,8 +392,10 @@ public function logout()
 {
   if(Auth::guard('web')->check())
     Auth::guard('web')->logout();
-  else
+  elseif(Auth::guard('bic')->check())
     Auth::guard('bic')->logout();
+  else
+    Auth::guard('facilitator')->logout();
   return redirect()->intended('home');
 }
 
@@ -539,7 +544,8 @@ public function bookinfo2() {
 }
 
 public function registerBicsForm() {
-    return view('register-bics');
+    $themes = Theme::all();
+    return view('register-bics', compact('themes'));
 }
 
 public function registerBics(Request $request) {
@@ -558,11 +564,49 @@ public function registerBics(Request $request) {
 }
 
 public function bicDashboard() {
-  return view('station.bic-dashboard');
+  $user = Auth::guard('bic')->user();
+  $facilitators = $user->theme->facilitators;
+  return view('station.bic-dashboard', compact('user', 'facilitators'));
 }
 
 public function facilitatorDashboard() {
-  return view('station.facilitator-dashboard');
+  $user = Auth::guard('facilitator')->user();
+  $bics = $user->theme->bics;
+  return view('station.facilitator-dashboard', compact('user', 'bics'));
+}
+
+public function uploadModule(Post $post, Request $request) {
+  $user = Auth::guard('facilitator')->user();
+  if($request->hasFile('module')) {
+    $module_name = $request->file('module')->getClientOriginalName();
+    $file_url = $request->file('module')->storeAs('/public/uploads/modules', $module_name);
+    $module_url = str_replace("public/", "", $file_url);
+    $module = new Module;
+    $module->name = $module_name;
+    $module->description = $request->description;
+    $module->url = $file_url;
+    $module->user_id = $user->id;
+    $post->modules()->save($module);
+  }
+  return redirect()->route('viewPost', $post->id)->with('success', 'File Uploaded Successfully!!!');
+}
+
+public function addFacilitatorComment(Post $post, Request $request) {
+  $user = null;
+  $isFacilitator = Auth::guard('facilitator')->check();
+  if($isFacilitator)
+    $user = Auth::guard('facilitator')->user();
+  else
+    $user = Auth::guard('bic')->user();
+
+  $comment = new FacilitatorComment;
+  $comment->post_id = $post->id;
+  $comment->username = $user->username;
+  $comment->usertype = $isFacilitator ? 'f' : 'u';
+  $comment->message = $request->message;
+  $comment->save();
+
+  return redirect()->route('viewPost', $post->id)->with('successComment', 'Comment submitted successfully!!!');
 }
 
 public function addbookprocess2(Request $request){
@@ -860,7 +904,9 @@ public function posts() {
 }
 
 public function viewPost(Post $post) {
-  return view('dashboard.view-post', compact('post'));
+  $modules = $post->modules;
+  $comments = FacilitatorComment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
+  return view('dashboard.view-post', compact('post', 'modules', 'comments'));
 }
 
 public function deletePost(Post $post) {
@@ -1298,6 +1344,7 @@ if($validator->fails()){
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'theme_id' => ['required', 'string'],
             'school' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:bics', 'unique:facilitators'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],

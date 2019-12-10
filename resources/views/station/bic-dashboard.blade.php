@@ -26,6 +26,16 @@
 				<h4><b>SCHOOL</b></h4>
 				<div>{{ Auth::guard('bic')->user()->school }}</div>
 			</div>
+			<div class="col-md-5">
+				<h4><b>THEME</b></h4>
+				<div>{{ $user->theme->name }}</div>
+			</div>
+			<div class="col-md-7">
+				<h4><b>REGISTERED FACILITATORS</b></h4>
+				@foreach($facilitators as $facilitator)
+					<div>{{ $facilitator->first_name }} {{ $facilitator->last_name }}</div>
+				@endforeach
+			</div>
 	</div>
 </div>
 @endsection

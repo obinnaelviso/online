@@ -9,22 +9,32 @@
 				<div class="section-divider"></div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="margin-left: +20px">
 			<div class="col-md-5 md-mb-40">
 				<h4><b>FIRST NAME</b></h4>
-				<div>{{ Auth::guard('facilitator')->user()->first_name }}</div>
+				<div>{{ $user->first_name }}</div>
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-7 md-mb-40">
 				<h4><b>LAST NAME</b></h4>
-				<div>{{ Auth::guard('facilitator')->user()->last_name }}</div>
+				<div>{{ $user->last_name }}</div>
 			</div>
 			<div class="col-md-5">
 				<h4><b>USERNAME</b></h4>
-				<div>{{ Auth::guard('facilitator')->user()->username }}</div>
+				<div>{{ $user->username }}</div>
 			</div>
 			<div class="col-md-7">
 				<h4><b>SCHOOL</b></h4>
-				<div>{{ Auth::guard('facilitator')->user()->school }}</div>
+				<div>{{ $user->school }}</div>
+			</div>
+			<div class="col-md-5">
+				<h4><b>THEME</b></h4>
+				<div>{{ $user->theme->name }}</div>
+			</div>
+			<div class="col-md-7">
+				<h4><b>REGISTERED BICS</b></h4>
+				@foreach($bics as $bic)
+					<div>{{ $bic->first_name }} {{ $bic->last_name }}</div>
+				@endforeach
 			</div>
 	</div>
 </div>
