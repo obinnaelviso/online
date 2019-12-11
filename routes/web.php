@@ -34,6 +34,17 @@ Route::get('bicregister',['uses' =>'AdminController@registerBicsForm']);
 
 Route::post('bics/',['uses' =>'AdminController@registerBics', 'as' => 'register.bics']);
 Route::get('bic-dashboard/',['uses' =>'AdminController@bicDashboard'])->name('bicDashboard');
+Route::get('/bic/certificate/view', 'AdminController@printCertificate')->name('printCertificate');
+Route::get('/bic/certificate/', 'AdminController@viewCertificate')->name('viewCertificate');
+Route::get('bic/posts',['uses' =>'AdminController@bicPosts'])->name('bicPosts');
+Route::get('bic/posts/{post}/view',['uses' =>'AdminController@viewBicPost'])->name('viewBicPost');
+Route::get('bic/posts/{post}/edit',['uses' =>'AdminController@editBicPostPage'])->name('editBicPost');
+Route::put('bic/posts/{post}/edit',['uses' =>'AdminController@editBicPost']);
+Route::get('bic/posts/create',['uses' =>'AdminController@createBicPostPage'])->name('createBicPost');
+Route::post('bic/posts/create',['uses' =>'AdminController@createBicPost']);
+Route::post('bic/posts/{post}/view/upload',['uses' =>'AdminController@uploadBicModule'])->name('uploadBicModule');
+Route::post('bic/posts/{post}/view/comment',['uses' =>'AdminController@addFacilitatorComment'])->name('addFacilitatorComment');
+Route::delete('bic/posts/{post}/delete',['uses' =>'AdminController@deleteBicPost'])->name('deleteBicPost');
 
 Route::get('facilitator-dashboard/',['uses' =>'AdminController@facilitatorDashboard'])->name('facilitatorDashboard');
 Route::get('facilitator/posts',['uses' =>'AdminController@posts'])->name('posts');
@@ -41,6 +52,8 @@ Route::get('facilitator/posts/{post}/view',['uses' =>'AdminController@viewPost']
 Route::get('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPostPage'])->name('editPost');
 Route::put('facilitator/posts/{post}/edit',['uses' =>'AdminController@editPost']);
 Route::get('facilitator/posts/create',['uses' =>'AdminController@createPostPage'])->name('createPost');
+Route::get('facilitator/certification/',['uses' =>'AdminController@certificationPage'])->name('certification');
+Route::post('facilitator/certification/{bic}/issue',['uses' =>'AdminController@issueCertificate'])->name('issueCertificate');
 Route::post('facilitator/posts/create',['uses' =>'AdminController@createPost']);
 Route::post('facilitator/posts/{post}/view/upload',['uses' =>'AdminController@uploadModule'])->name('uploadModule');
 Route::post('facilitator/posts/{post}/view/comment',['uses' =>'AdminController@addFacilitatorComment'])->name('addFacilitatorComment');
