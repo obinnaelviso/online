@@ -51,7 +51,9 @@
 							<th>Name</th>
 							<th>Description</th>
 							<th>Date</th>
-							<th>Action</th>
+							@if(Auth::guard('facilitator')->check())
+								<th>Action</th>
+							@endif
 						</tr>
 					</thead>
 					<tbody>
@@ -60,7 +62,11 @@
 								<th>{{ $module->name }}</a></th>
 								<th>{{ $module->description }}</th>
 								<th>{{ $module->created_at }}</th>
-								<th><a href="/storage/{{ str_replace("public/", "", $module->url) }}" class="btn btn-danger" download><span class="fa fa-download"></span> Download</a></th>
+								<th>
+									@if(Auth::guard('facilitator')->check())
+										<a href="/storage/{{ str_replace("public/", "", $module->url) }}" class="btn btn-danger" download><span class="fa fa-download"></span> Download</a>
+									@endif
+								</th>
 							</tr>
 						@endforeach
 					</tbody>

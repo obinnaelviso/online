@@ -22,4 +22,11 @@ class Theme extends Model
     public function facilitators() {
         return $this->hasMany('App\Facilitator');
     }
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
+    public function bicPosts() {
+        return $this->hasMany('App\BicPost');
+    }
 }

@@ -14,6 +14,7 @@ use App\citedkpi;
 use App\lecturernote;
 use App\ctes;
 use App\studentlist;
+use App\Certificate;
 use App\bookinfo;
 use App\admindocument;
 use App\borangpemetaan;
@@ -585,7 +586,6 @@ public function uploadModule(Post $post, Request $request) {
     $module->name = $module_name;
     $module->description = $request->description;
     $module->url = $file_url;
-    $module->user_id = $user->id;
     $post->modules()->save($module);
   }
   return redirect()->route('viewPost', $post->id)->with('success', 'File Uploaded Successfully!!!');
@@ -875,6 +875,34 @@ public function createPost(Request $request) {
     return redirect()->route('createPost')->with('success', 'Posts created successfully!');
 
 }
+
+public function createBicPostPage() {
+  return view('dashboard.create-bic-post');
+}
+
+public function createBicPost(Request $request) {
+  $rules = array(
+  'title' => 'required',
+  'body' => 'required',
+
+  );
+
+  $feedbackmsg = array(
+    'title.required' => 'Kindly enter title',
+    'body.required' => 'Kindly enter body',
+  );
+  $validator = Validator::make($request->all(),$rules,$feedbackmsg);
+
+
+    $post = new BicPost;
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->facilitator_id = Auth::guard('facilitator')->user()->id;
+    $post->save();
+    return redirect()->route('createBicPost')->with('success', 'Posts created successfully!');
+
+}
+
 public function editPostPage(Post $post) {
   return view('dashboard.edit-post', compact('post'));
 }
@@ -898,9 +926,45 @@ public function editPost(Post $post, Request $request) {
 
 }
 
+public function certificationPage() {
+  $user = Auth::guard('facilitator')->user();
+  $bics = $user->theme->bics;
+  return view('dashboard.certification', compact('bics'));
+}
+
+public function issueCertificate(Bic $bic, Request $request) {
+  $user = Auth::guard('facilitator')->user();
+  $certificate = new Certificate;
+  $certificate->facilitator_id = $user->id;
+  $certificate->bic_id = $bic->id;
+  $certificate->theme_id = $user->theme->id;
+  $certificate->save();
+  return redirect()->route('certification');
+}
+
+public function printCertificate() {
+  $user = Auth::guard('bic')->user();
+  return view('dashboard.certificate', compact('user'));
+}
+
 public function posts() {
-  $posts = Post::latest()->paginate(20);
+  $user = null;
+  if(Auth::guard('bic')->check())
+    $user = Auth::guard('bic')->user();
+  else
+    $user = Auth::guard('facilitator')->user();
+  $posts = $user->theme->posts()->latest()->paginate(20);
   return view('dashboard.posts', compact('posts'));
+}
+
+public function bicPosts() {
+  $user = null;
+  if(Auth::guard('bic')->check())
+    $user = Auth::guard('bic')->user();
+  else
+    $user = Auth::guard('facilitator')->user();
+  $posts = $user->theme->bicPosts()->latest()->paginate(20);
+  return view('dashboard.bic-posts', compact('posts'));
 }
 
 public function viewPost(Post $post) {
