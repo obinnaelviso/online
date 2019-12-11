@@ -870,6 +870,7 @@ public function createPost(Request $request) {
     $post = new Post;
     $post->title = $request->title;
     $post->body = $request->body;
+    $post->theme_id = Auth::guard('facilitator')->user()->theme->id;
     $post->facilitator_id = Auth::guard('facilitator')->user()->id;
     $post->save();
     return redirect()->route('createPost')->with('success', 'Posts created successfully!');
