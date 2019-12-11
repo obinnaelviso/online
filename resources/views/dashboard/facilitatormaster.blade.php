@@ -64,7 +64,7 @@
           <li>
             <a href="{{ route('facilitatorDashboard') }}"><i class="fa fa-home menu-icon"></i> HOME</a>
           </li>
-          <li class="dropdown">
+          {{-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon" ></i>  PRODUCT<span class="caret"></span>
             </a>
@@ -74,7 +74,7 @@
               </li>
             </ul>
             <div class="clearfix"></div>
-          </li>
+          </li> --}}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon" ></i>  POSTS<span class="caret"></span>
@@ -91,7 +91,10 @@
           </li>
           <li class="dropdown">
             <li>
-              <a href="contact"><i class="fa fa-phone"></i>CONTACT </a>
+              <a href="{{ route('certification') }}"><i class="fa fa-paper-plane"></i>CERTIFICATION </a>
+            </li>
+            <li>
+              <a href="/contact"><i class="fa fa-phone"></i>CONTACT </a>
             </li>
             <li ul class="dropdown">
               <div class="all-notifications">

@@ -945,7 +945,16 @@ public function issueCertificate(Bic $bic, Request $request) {
 
 public function printCertificate() {
   $user = Auth::guard('bic')->user();
+  if(!$user->certificate) {
+    return redirect()->route('viewCertificate');
+  }
   return view('dashboard.certificate', compact('user'));
+}
+
+public function viewCertificate() {
+  $user = Auth::guard('bic')->user();
+
+  return view('dashboard.view-certification', compact('user'));
 }
 
 public function posts() {

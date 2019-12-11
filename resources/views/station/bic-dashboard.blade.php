@@ -10,6 +10,11 @@
 			</div>
 		</div>
 		<div class="row">
+			@if($user->certificate)
+				<div class="col-md-12" style="margin-bottom: 20px; text-align: center">
+					<div class="label label-success" style="font-size: 20px;">Congratulations! You have received a <a href="{{ route('viewCertificate') }}">certificate.</a></div><br>
+				</div>
+			@endif
 			<div class="col-md-5 md-mb-40">
 				<h4><b>FIRST NAME</b></h4>
 				<div>{{ Auth::guard('bic')->user()->first_name }}</div>
@@ -27,7 +32,7 @@
 				<div>{{ Auth::guard('bic')->user()->school }}</div>
 			</div>
 			<div class="col-md-5">
-				<h4><b>THEME</b></h4>
+				1<h4><b>THEME</b></h4>
 				<div>{{ $user->theme->name }}</div>
 			</div>
 			<div class="col-md-7">

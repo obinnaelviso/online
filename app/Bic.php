@@ -30,4 +30,8 @@ class Bic extends Authenticatable
     public function theme() {
         return $this->belongsTo('App\Theme');
     }
+
+    public function certificate() {
+        return $this->hasOne('App\Certificate');
+    }
 }

@@ -65,7 +65,7 @@
           <li>
             <a href="{{ route('bicDashboard') }}"><i class="fa fa-home menu-icon"></i> HOME</a>
           </li>
-          <li class="dropdown">
+          {{-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon" ></i>  PRODUCT<span class="caret"></span>
             </a>
@@ -75,15 +75,12 @@
               </li>
             </ul>
             <div class="clearfix"></div>
-          </li>
+          </li> --}}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file menu-icon" ></i>  POSTS<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <a href="{{ route('createPost') }}"><i class="fa fa-caret-right"></i> CREATE POST</a>
-              </li>
               <li>
                 <a href="{{ route('posts') }}"><i class="fa fa-caret-right"></i>FACILITATOR POSTS</a>
               </li>
@@ -91,6 +88,9 @@
             <div class="clearfix"></div>
           </li>
           <li class="dropdown">
+            <li>
+              <a href="{{ route('viewCertificate') }}"><i class="fa fa-paper-plane"></i>CERTIFICATE @if(Auth::guard('bic')->user()->certificate) <span class="label label-success">READY</span>@endif</a>
+            </li>
             <li>
               <a href="contact"><i class="fa fa-phone"></i>CONTACT </a>
             </li>

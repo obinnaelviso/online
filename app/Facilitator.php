@@ -34,4 +34,8 @@ class Facilitator extends Authenticatable
     public function bics() {
         return $this->hasMany('App\Bic');
     }
+
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
 }
