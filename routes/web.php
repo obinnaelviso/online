@@ -34,6 +34,8 @@ Route::get('bicregister',['uses' =>'AdminController@registerBicsForm']);
 
 Route::post('bics/',['uses' =>'AdminController@registerBics', 'as' => 'register.bics']);
 Route::get('bic-dashboard/',['uses' =>'AdminController@bicDashboard'])->name('bicDashboard');
+Route::get('change-password/',['uses' =>'AdminController@changePasswordPage'])->name('changePasswordPage');
+Route::post('change-password/',['uses' =>'AdminController@changePassword']);
 Route::get('/bic/certificate/view', 'AdminController@printCertificate')->name('printCertificate');
 Route::get('/bic/certificate/', 'AdminController@viewCertificate')->name('viewCertificate');
 Route::get('bic/posts',['uses' =>'AdminController@bicPosts'])->name('bicPosts');

@@ -41,6 +41,10 @@
 					<div>{{ $facilitator->first_name }} {{ $facilitator->last_name }}</div>
 				@endforeach
 			</div>
+			<br>
+			<div class="col-md-12" style="margin-top: 50px">
+				<a href="{{ route('changePasswordPage') }}" class="btn btn-warning">Change Password</a>
+			</div>
 	</div>
 </div>
 @endsection

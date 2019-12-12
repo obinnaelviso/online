@@ -36,6 +36,9 @@
 					<div>{{ $bic->first_name }} {{ $bic->last_name }}</div>
 				@endforeach
 			</div>
+			<div class="col-md-12" style="margin-top: 50px">
+				<a href="{{ route('changePasswordPage') }}" class="btn btn-warning">Change Password</a>
+			</div>
 	</div>
 </div>
 @endsection

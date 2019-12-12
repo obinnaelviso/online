@@ -49,6 +49,7 @@
 					<thead>
 						<tr>
 							<th>Name</th>
+							<th>User</th>
 							<th>Description</th>
 							<th>Date</th>
 							<th>Action</th>	
@@ -58,6 +59,7 @@
 						@foreach($modules as $module)
 							<tr>
 								<th>{{ $module->name }}</a></th>
+								<th>{{ $module->user }}</a></th>
 								<th>{{ $module->description }}</th>
 								<th>{{ $module->created_at }}</th>
 								<th>

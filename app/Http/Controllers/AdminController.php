@@ -576,14 +576,54 @@ public function facilitatorDashboard() {
   return view('station.facilitator-dashboard', compact('user', 'bics'));
 }
 
+public function changePasswordPage() {
+  $user = null;
+  $isFacilitator = Auth::guard('facilitator')->check();
+  if($isFacilitator)
+    $user = Auth::guard('facilitator')->user();
+  else
+    $user = Auth::guard('bic')->user();
+  return view('dashboard.change-password', compact('user'));
+}
+
+public function changePassword(Request $request) {
+  $user = null;
+  $isFacilitator = Auth::guard('facilitator')->check();
+  if($isFacilitator)
+    $user = Auth::guard('facilitator')->user();
+  else
+    $user = Auth::guard('bic')->user();
+
+  $this->validate(request(), [
+      'old_password' => 'required|min:8',
+      'password' => 'required|min:8|confirmed'
+  ]);
+
+  if($user->password === $request->old_password) {
+      $user->password = $request->password;
+      $user->save();
+      
+      session()->flash('success', 'Password changed successfully!');
+      return redirect()->route('changePasswordPage');       
+  }
+  session()->flash('error','Wrong Password. Please try again!');
+  return redirect()->back();
+}
+
 public function uploadModule(Post $post, Request $request) {
-  $user = Auth::guard('facilitator')->user();
+  $user = null;
+  $isFacilitator = Auth::guard('facilitator')->check();
+  if($isFacilitator)
+    $user = Auth::guard('facilitator')->user();
+  else
+    $user = Auth::guard('bic')->user();
   if($request->hasFile('module')) {
     $module_name = $request->file('module')->getClientOriginalName();
     $file_url = $request->file('module')->storeAs('/public/uploads/modules', $module_name);
     $module_url = str_replace("public/", "", $file_url);
     $module = new Module;
     $module->name = $module_name;
+    $module->user = $user->first_name.' '.$user->last_name;
     $module->description = $request->description;
     $module->url = $file_url;
     $post->modules()->save($module);
