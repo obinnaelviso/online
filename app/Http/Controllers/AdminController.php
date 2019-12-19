@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\User;
 use App\Bic;
+use App\StudentInfo;
 use App\Post;
 use App\Facilitator;
 use App\citedkpi;
@@ -45,6 +46,10 @@ public function myregister(Request $request){
   $user->question = $request->question;
   $user->answer = $request->answer;
   $user->save();
+  if($user->usertype == 0) {
+    $student_info = new StudentInfo;
+    $user->student_info()->save($student_info);
+  }
   return view('registersuccessful');
 }
 
