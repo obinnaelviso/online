@@ -1,4 +1,4 @@
-@extends(Auth::guard('facilitator')->check() ? 'dashboard.facilitatormaster' : 'dashboard.bicmaster')
+@extends(Auth::guard('facilitator')->check() ? 'dashboard.facilitatormaster' : (Auth::guard('web')->check() ? 'dashboard.studentmaster' : 'dashboard.bicmaster'))
 
 @section('content')
 

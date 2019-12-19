@@ -38,7 +38,7 @@
 			<div class="col-md-7">
 				<h4><b>REGISTERED FACILITATORS</b></h4>
 				@foreach($facilitators as $facilitator)
-					<div>{{ $facilitator->first_name }} {{ $facilitator->last_name }}</div>
+					<div>{{ $facilitator->first_name.' '.$facilitator->last_name }}</div>
 				@endforeach
 			</div>
 			<br>

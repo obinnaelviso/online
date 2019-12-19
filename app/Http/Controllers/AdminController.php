@@ -33,105 +33,20 @@ class AdminController extends Controller
 
 
 public function myregister(Request $request){
-  //echo json_encode($request->all());
-  $rules;
-  if ( $request->usertype == "student"){
-
-    if ( $request->program == "OTHERS"){
-      $rules = array(
-      'firstname' => 'required|regex:/^[\pL\s\-]+$/u',
-      'lastname' => 'required|regex:/^[\pL\s\-]+$/u',
-      'program' => 'required',
-      'idnum' => 'required',
-      'email' => 'required|email|unique:users,email',
-      'confirmemail' => 'same:email',
-      'password' => 'required|alphaNum|min:8',
-      'confirmpassword' => 'same:password',
-      'question' => 'required',
-      'answer' => 'required',
-      'others' =>  'required'
-      );
-    } else{
-    $rules = array(
-    'firstname' => 'required|regex:/^[\pL\s\-]+$/u',
-    'lastname' => 'required|regex:/^[\pL\s\-]+$/u',
-    'program' => 'required',
-    'idnum' => 'required',
-    'email' => 'required|email|unique:users,email',
-    'confirmemail' => 'same:email',
-    'password' => 'required|alphaNum|min:8',
-    'confirmpassword' => 'same:password',
-    'question' => 'required',
-    'answer' => 'required',
-    );
-  }
-  }else{
-    $rules = array(
-    'firstname' => 'required|regex:/^[\pL\s\-]+$/u',
-    'lastname' => 'required|regex:/^[\pL\s\-]+$/u',
-    'idnum' => 'required',
-    'email' => 'required|email|unique:users,email',
-    'confirmemail' => 'same:email',
-    'password' => 'required|alphaNum|min:8',
-    'confirmpassword' => 'same:password',
-    'question' => 'required',
-    'answer' => 'required',
-    );
-  }
-
-
-
-
-$feedbackmsg = array(
-  'firstname.required' => 'Please provide your first name',
-  'firstname.alpha' => 'First Name cannot include numbers',
-  'firstname.min' => 'First Name cannot be less than two alphabets',
-  'lastname.required' => 'Please provide your last name',
-  'lastname.alpha' => 'Last Name cannot include numbers',
-  'lastname.min' => 'Last Name cannot be less than two alphabets',
-  'program.required' => 'Select or Enter a Program',
-  'idnum.required' => 'If you are a student kindly enter your matric number, if you are a staff kindly enter your Staff ID, If you are a vistor Kindly enter your IC/Passport Number',
-  'email.required' => 'Please provide a valid email address',
-  'email.unique' => 'This email already exists',
-  'confirmemail.same' => 'Email Address does not match',
-  'confirmpassword.same' => 'Password does not match',
-  'question.required' => 'Please provide a Security Question',
-  'answer.required' => 'Please provide a Security Answer',
-  'others.required' => 'Please Enter a Program',
-);
-
-
-
-
-$validator = Validator::make($request->all(),$rules,$feedbackmsg);
-
-if($validator->fails()){
-  return back()->withErrors($validator);
-  return;
+  $this->userValidator($request->all())->validate();
+  $user = new User;
+  $user->firstname = $request->firstname;
+  $user->lastname = $request->lastname;
+  $user->usertype = $request->usertype;
+  $user->idnum = $request->idnum;
+  $user->program = $request->program;
+  $user->email = $request->email;
+  $user->password = $request->password;
+  $user->question = $request->question;
+  $user->answer = $request->answer;
+  $user->save();
+  return view('registersuccessful');
 }
-
-  $user = new User();
-   $user->firstname = $request->firstname;
-   $user->lastname = $request->lastname;
-   $user->usertype = $request->usertype;
-
-   if ($request->program == "OTHERS"){
-$user->program = $request->others;
-
-   }else{
-     $user->program = $request->program;
-   }
-
-
-
-   $user->idnum = $request->idnum;
-   $user->email = $request->email;
-   $user->password = $request->password;
-   $user->question = $request->question;
-   $user->answer = $request->answer;
-   $user->save();
- return view('registersuccessful');
- }
 
 
 
@@ -192,7 +107,7 @@ $user->program = $request->others;
 
      if($user->usertype == 0){
        //redirect to student
-       return redirect()->intended('student_dashboard');
+       return redirect()->route('student.index');
      }else if($user->usertype == 1){
          //redirect to lecturers
          return redirect()->intended('lecturerdashboard');
@@ -1453,16 +1368,29 @@ if($validator->fails()){
  return view('bookingsuccessful');
  }
 
- protected function bicValidator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'theme_id' => ['required', 'string'],
-            'school' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:bics', 'unique:facilitators'],
-            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
-        ]);
-    }
+protected function bicValidator(array $data)
+{
+  return Validator::make($data, [
+    'first_name' => ['required', 'string', 'max:255'],
+    'last_name' => ['required', 'string', 'max:255'],
+    'theme_id' => ['required', 'string'],
+    'school' => ['required', 'string', 'max:255'],
+    'username' => ['required', 'string', 'max:255', 'unique:bics', 'unique:facilitators'],
+    'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+  ]);
+}
 
+  protected function userValidator(array $data)
+  {
+    return Validator::make($data, [
+      'firstname' => ['required', 'string', 'max:255'],
+      'lastname' => ['required', 'string', 'max:255'],
+      'usertype' => ['required', 'numeric'],
+      'idnum' => ['required'],
+      'email' => ['required', 'email', 'string', 'max:255', 'confirmed'],
+      'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+      'question' => ['required', 'string', 'max:255'],
+      'answer' => ['required', 'string', 'max:255'],
+    ]);
+  }
 }

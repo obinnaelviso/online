@@ -61,6 +61,21 @@ Route::post('facilitator/posts/{post}/view/upload',['uses' =>'AdminController@up
 Route::post('facilitator/posts/{post}/view/comment',['uses' =>'AdminController@addFacilitatorComment'])->name('addFacilitatorComment');
 Route::delete('facilitator/posts/{post}/delete',['uses' =>'AdminController@deletePost'])->name('deletePost');
 
+// Student Dashboard
+Route::get('/student/dashboard',['uses' =>'StudentController@index'])->name('student.index');
+Route::get('/student/profile',['uses' =>'StudentController@profile'])->name('student.profile');
+Route::get('/student/profile/edit',['uses' =>'StudentController@editProfile'])->name('student.profile.edit');
+Route::put('/student/profile/edit/',['uses' =>'StudentController@profileEdit']);
+Route::get('/student/profile/documents/',['uses' =>'StudentController@documents'])->name('student.profile.documents');
+Route::put('/student/profile/documents/',['uses' =>'StudentController@upload']);
+Route::put('/student/profile/documents/portfolio/remove',['uses' =>'StudentController@removePortfolio'])->name('student.profile.remove.portfolio');
+Route::put('/student/profile/documents/resume/remove',['uses' =>'StudentController@removeResume'])->name('student.profile.remove.resume');
+Route::put('/student/profile/documents/publication1/remove',['uses' =>'StudentController@removePublication1'])->name('student.profile.remove.publication1');
+Route::put('/student/profile/documents/publication2/remove',['uses' =>'StudentController@removePublication2'])->name('student.profile.remove.publication2');
+Route::get('/student/courses/',['uses' =>'StudentController@courses'])->name('student.profile.courses');
+Route::post('/student/courses/',['uses' =>'StudentController@coursesAdd']);
+Route::put('/student/courses/{course}/edit',['uses' =>'StudentController@courseEdit'])->name('student.profile.course.edit');
+
 
 Route::post('enteremailprocess',['uses' =>'AdminController@enteremailprocess', 'as' => 'enteremailprocess']);
 

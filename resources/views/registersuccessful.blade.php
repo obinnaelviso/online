@@ -16,6 +16,7 @@
       <div class="contact-form col-sm-12">
         <div class="col-xs-12">
           <h3><i class="fa fa-check"></i>Registration Successful.</h3>
+          <i>You'll be redirected shortly to the login page. Or you click <a href="{{ url('login') }}">here</a>.</i>
         </div>
 
         <div class="clearfix"></div>
@@ -28,8 +29,8 @@
 
 
   <script type="text/JavaScript">
-redirectTime = "1000";
-redirectURL = "http://localhost/once/public/login";
+redirectTime = "3000";
+redirectURL = "{{ url('login') }}";
 function timedRedirect() {
     setTimeout("location.href = redirectURL;",redirectTime);
 }
