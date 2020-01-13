@@ -46,6 +46,11 @@ return [
             'provider' => 'bics',
         ],
 
+        'inside' => [
+            'driver' => 'session',
+            'provider' => 'insides',
+        ],
+
         'facilitator' => [
             'driver' => 'session',
             'provider' => 'facilitators',
@@ -86,6 +91,11 @@ return [
             'model' => App\Bic::class,
         ],
 
+        'insides' => [
+            'driver' => 'eloquent',
+            'model' => App\Inside::class,
+        ],
+
         'facilitators' => [
             'driver' => 'eloquent',
             'model' => App\Facilitator::class,
@@ -123,6 +133,13 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'insides' => [
+            'provider' => 'insides',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
         'facilitators' => [
             'provider' => 'facilitators',
             'table' => 'password_resets',

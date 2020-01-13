@@ -28,6 +28,9 @@ Route::post('addlecturernotelecturer', ['uses' => 'AdminController@addlecturerno
 Route::post('addbookprocess', ['uses' => 'AdminController@addbookprocess', 'as' => 'addbookprocess']);
 Route::post('addbookprocess2', ['uses' => 'AdminController@addbookprocess2', 'as' => 'addbookprocess2']);
 
+Route::get('registerinside', ['uses' => 'AdminController@registerInsideForm', 'as' => 'registerinside']);
+Route::post('registerinside', ['uses' => 'AdminController@registerInside', 'as' => 'registerInside']);
+
 Route::get('logout',['uses' =>'AdminController@logout', 'as' => 'logout']);
 
 Route::get('bicregister',['uses' =>'AdminController@registerBicsForm']);
@@ -309,11 +312,11 @@ Route::get('editclasstimetable', function () {
 //     return view('dashboard.borangpemetaan');
 // });
 
-Route::get('/borangpemetaan', ['uses' => 'AdminController@borangpemetaaan', 'as' => 'borangpemetaan']); 
+Route::get('/borangpemetaan', ['uses' => 'AdminController@borangpemetaaan', 'as' => 'borangpemetaan']);
 
-Route::get('/ctes', ['uses' => 'AdminController@ctes', 'as' => 'ctes']); 
+Route::get('/ctes', ['uses' => 'AdminController@ctes', 'as' => 'ctes']);
 
-Route::post('/ctes', ['uses' => 'AdminController@addctes', 'as' => 'ctes']); 
+Route::post('/ctes', ['uses' => 'AdminController@addctes', 'as' => 'ctes']);
 
 Route::get('/viewctes', ['uses' => 'AdminController@viewctes', 'as' => 'viewctes']);
 
@@ -339,6 +342,29 @@ Route::get('/admindocument', function () {
     return view('dashboard.admindocument');
 });
 
+Route::get('team', function () {
+    return view('team');
+});
+
+Route::get('gallery', function () {
+    return view('gallery');
+});
+
+Route::get('inside2020', function () {
+    return view('inside2020');
+});
+
+Route::get('aboutinside', function () {
+    return view('aboutinside');
+});
+
+Route::get('galleryinside', function () {
+    return view('galleryinside');
+});
+
+Route::get('terms', function () {
+    return view('terms');
+});
 /*Route::get('stationhome', function () {
     return view('station.index');
 });

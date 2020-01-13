@@ -477,7 +477,7 @@ public function registerBicsForm() {
   public function registerInside(Request $request) {
     $this->insideValidator($request->all())->validate();
     $user = Inside::create($request->all());
-    Mail::to('inside@um.edu.my')->send(new InsideRegister($request, 'admin'));
+    Mail::to('notifications@citedum.com')->send(new InsideRegister($request, 'admin'));
     Mail::to($request->email)->send(new InsideRegister($request, 'user'));
     Auth::guard('inside')->login($user);
     return "Registration Successful!!!";
@@ -536,9 +536,9 @@ public function changePassword(Request $request) {
   if($user->password === $request->old_password) {
       $user->password = $request->password;
       $user->save();
-
+      
       session()->flash('success', 'Password changed successfully!');
-      return redirect()->route('changePasswordPage');
+      return redirect()->route('changePasswordPage');       
   }
   session()->flash('error','Wrong Password. Please try again!');
   return redirect()->back();
@@ -1418,11 +1418,10 @@ protected function bicValidator(array $data)
     return Validator::make($data, [
       'firstname' => ['required', 'string', 'max:255'],
       'lastname' => ['required', 'string', 'max:255'],
-      'email' => ['required', 'string', 'max:255'],
-    /*  'catype' => ['required', 'string'],
+      'catype' => ['required', 'string'],
       'idnum' => ['required', 'string', 'max:255'],
       'correspondence' => ['required', 'string', 'max:255'],
-
+      'email' => ['required', 'string', 'max:255'],
       'mailaddress' => ['required', 'string', 'max:255'],
       'telephone' => ['required', 'string', 'max:255'],
       'whatsapp' => ['required', 'string', 'max:255'],
@@ -1430,7 +1429,7 @@ protected function bicValidator(array $data)
       'participants' => ['required', 'string', 'max:255'],
       'productname' => ['required', 'string', 'max:255'],
       'cert' => ['required', 'string', 'max:255'],
-      'medal' => ['required', 'string', 'max:255'],*/
+      'medal' => ['required', 'string', 'max:255'],
       'password' => ['required', 'string', 'max:255', 'confirmed'],
     ]);
   }
